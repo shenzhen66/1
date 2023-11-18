@@ -13,12 +13,12 @@
 </head>
 <body>
 
-    <section id11="main">
-        <video id11="player" src="https://api.xyttkx.cn/rwsp.php" controls webkit-playsinline playsinline></video>
+    <section id="main">
+        <video id="player" src="https://api.xyttkx.cn/rwsp.php" controls webkit-playsinline playsinline></video>
     </section>
-    <section id11="buttons">
+    <section id="buttons">
         <button id="switch">连续: 开</button>
-        <button id11="next">播放下一个</button>
+        <button id="next">播放下一个</button>
 
     </section>
     <script>
@@ -26,8 +26,8 @@
         if (top != self) {
             window.top.location.replace(self.location.href);
         }
-        var get = function (id11) {
-            return document.getElementById(id11);
+        var get = function (id) {
+            return document.getElementById(id);
         }
         var bind = function (element, event, callback) {
             return element.addEventListener(event, callback);
@@ -35,7 +35,7 @@
         var auto = true;
         var player = get('player');
         var randomm = function () {
-            player.src = 'https://api.xyttkx.cn/sgsp.php?_t=' + Math.random();
+            player.src = 'https://api.xyttkx.cn/rwsp.php?_t=' + Math.random();
             player.play();
         }
         bind(get('next'), 'click', randomm);
