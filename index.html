@@ -1,55 +1,112 @@
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"KFNz16hMuAVB5sQD",ck:"KFNz16hMuAVB5sQD"})</script>
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charSet="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Cache-Control" content="no-transform" /> 
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="referrer" content="never">
-    <meta name="renderer" content="webkit" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>视频</title>
-    <link rel="stylesheet" href="http://lx.linxi.icu/xjj/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线看帅哥视频</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.top{
+			width: 100%;
+			height: 100%;
+			/* border: solid 1px red; */
+			background-image: url("https://api.8uid.cn/api/jk.php");
+
+			
+		}
+		.top1{
+			width: 730px;
+			height: 510px;
+			margin: 5px auto;
+			/* border: solid 3px rgb(76, 21, 204); */
+		}
+		video {
+			width: 100%;
+			height: 100%;
+		}
+		.top2{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+		.anniu{
+			width: 100px;
+			background-color: pink;
+			margin: 5px;
+			font-size: 18px;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+		@media(max-width:768px){
+			.top1{
+				width: 100%;
+				height: 530px;;
+			}
+		}
+		@media(min-width:768px){
+			
+		}
+	</style>
 </head>
 <body>
 
-    <section id="main">
-        <video id="player" src="https://api.xyttkx.cn/rwsp.php" controls webkit-playsinline playsinline></video>
-    </section>
-    <section id="buttons">
-        <button id="switch">连续: 开</button>
-        <button id="next">播放下一个</button>
-
-    </section>
+	<div class="top">
+	
+		<div class="topw">
+			
+		</div>
+		<div class="top1">
+			<video  id="myVideo" webkit-playsinline playsinline x5-playsinline controls>
+				<source src="https://www.mnapi.cn/sg.php?type=video" type="video/mp4">
+			</video>
+		</div>
+		<div class="top2">
+			<div class="anniu" id="zdbf">自动: 关</div>
+			<div class="anniu" id="xyw">请下一位</div>
+			<div class="anniu" id="qhjk">切换接口</div>
+		</div>  
+	</div>
     <script>
-    (function (window, document) {
-        if (top != self) {
-            window.top.location.replace(self.location.href);
-        }
-        var get = function (id) {
-            return document.getElementById(id);
-        }
-        var bind = function (element, event, callback) {
-            return element.addEventListener(event, callback);
-        }
-        var auto = true;
-        var player = get('player');
-        var randomm = function () {
-            player.src = 'https://api.xyttkx.cn/rwsp.php?_t=' + Math.random();
-            player.play();
-        }
-        bind(get('next'), 'click', randomm);
-        bind(player, 'error', function () {
-            randomm();
-        });
-        bind(get('switch'), 'click', function () {
-            auto = !auto;
-            this.innerText = '连续: ' + (auto ? '开' : '关');
-        });
-        bind(player, 'ended', function () {
-            if (auto) randomm();
-        });
-    })(window, document);
-    </script>
+		var kk = 1;
+		var myVideo = document.getElementById("myVideo");
+		var xiayiwei = document.getElementById("xyw");
+		var zdbf = document.getElementById("zdbf");
+		var qhjk = document.getElementById("qhjk");
+		xiayiwei.addEventListener("click",function(){
+			myVideo.src = "https://www.mnapi.cn/sg.php?type=video";
+			myVideo.play();
+		}
+			
+		);
+		zdbf.addEventListener("click",function(){
+			
+			++kk;
+			zdbf.innerHTML="自动: 开";
+			if (kk % 2 == 0 ){
+			myVideo.addEventListener("ended", function() {
+			myVideo.src = "https://www.mnapi.cn/sg.php?type=video";
+			myVideo.play();
+			});
+		}else{
+			zdbf.innerHTML="自动: 关";
+			myVideo.addEventListener("ended", function() {
+			myVideo.src = "https://www.mnapi.cn/sg.php?type=video";
+			myVideo.paused;
+			});
+		}
+		}
+
+		)
+		
+	</script>
+	
 </body>
 </html>
